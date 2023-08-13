@@ -21,9 +21,9 @@
   */
 
     define("WV_PLUGIN_URI",plugin_dir_url(__FILE__));
-    require_once ("wv-init.php");
-    require_once ("wv-enqueued.php");
-    require_once ("wv-viewcount.php");
+    require_once ("wv-frontend/wv-init.php");
+    require_once ("wv-frontend/wv-enqueued.php");
+    require_once ("wv-backend/wv-viewcount.php");
 /*
  * INITIALIZATION: Creating an option page when the plugin is activated, (tbc).
  */
@@ -47,17 +47,16 @@
   
         $viewcountParamArray = array
         (
-    
           'postType'          => $postType,
           'scale'             => $settings["who_viewed_scale"],
           'timeZone'          => $settings["who_viewed_timeZone"],
           'displayedText'     => $settings['who_viewed_text'],
           'accentColor'       => $settings['who_viewed_acc_color'],
           "backgroundColor"   => $settings['who_viewed_bg_color'],
-          "faIcon"            => $settings['who_viewed_icon'],
-          "hAlign"            => $settings['who_viewed_h_alignment'],
-          'vAlign'            => $settings['who_viewed_v_alignment']
-    
+          'faIcon'            => $settings['who_viewed_icon'],
+          'hAlign'            => $settings['who_viewed_h_alignment'],
+          'vAlign'            => $settings['who_viewed_v_alignment'],
+          'hasExit'           => $settings['who_viewed_hasExit']
         );
 
         $viewCount = new WV_VIEWCOUNT($viewcountParamArray);

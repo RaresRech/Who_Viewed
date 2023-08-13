@@ -18,9 +18,8 @@
  
      function calculate($post_id)
      {
-         $weekend_amplifier = mt_rand(10, 20) / 10; // Randomly amplify weekend views between 1.0 and 2.0
+         $weekend_amplifier = 0.5;                   // Randomly amplify weekend views between 1.0 and 2.0
          $current_time = date('H');                 // Current hour in 24-hour format
-         $mapped_interval = mt_rand(1, 6);          // Randomly select a time interval
  
          $time_intervals = array(
              1 => "00-02",
@@ -75,7 +74,7 @@
           */
  
          $seed = crc32($post_id);
-         $random_value = mt_rand(0, 1); // Generate a random value between 0 and 6
+         $random_value = random_int(-2,2); // Generate a random value between -2 and 2
  
          /*
           * Adjusting value based off seed

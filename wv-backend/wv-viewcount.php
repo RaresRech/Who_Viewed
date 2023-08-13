@@ -23,6 +23,7 @@ class WV_VIEWCOUNT
     private $faIcon;
     private $hAlign;
     private $vAlign;
+    private $hasExit;
 
     function __construct($params)
     {
@@ -35,6 +36,7 @@ class WV_VIEWCOUNT
         $this->faIcon = $params["faIcon"];
         $this->hAlign = $params["hAlign"];
         $this->vAlign = $params["vAlign"];
+        $this->hasExit = $params["hasExit"];
 
         $this->calculator = new VIEW_GENERATOR($this->scale, $this->timeZone);
 
@@ -79,7 +81,14 @@ class WV_VIEWCOUNT
                         <?php echo $this->calculator->calculate(
                             get_the_ID()
                         ); ?> <?php echo $this->displayedText; ?>
-                          <div class="closeButton" onclick="closeDiv()">x</div>
+                        <?php
+                        if($this->hasExit)
+                        {
+                            ?>
+                                <div class="closeButton" onclick="closeDiv()">x</div>
+                            <?php
+                        }
+                        ?>
                     </div>
                 </div>   
             <?php }

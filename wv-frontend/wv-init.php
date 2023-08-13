@@ -11,7 +11,8 @@ class WV_OPTIONS_PAGE
     function __construct()
     {
         register_activation_hook(__FILE__, array($this, 'who_viewed_activation_function'));
-        register_deactivation_hook(__FILE__, function () {
+        register_deactivation_hook(__FILE__, function ()
+        {
             remove_menu_page('who-viewed-options');
         });
 
@@ -145,6 +146,13 @@ class WV_OPTIONS_PAGE
             'who_viewed_page',
             'who_viewed_section'
         );
+        add_settings_field(
+            'who_viewed_hasExit',
+            'Exit button',
+            array($this, 'who_viewed_hasExit_callback'),
+            'who_viewed_page',
+            'who_viewed_section'
+        );
         register_setting('who_viewed_group', 'who_viewed_enabled');
         register_setting('who_viewed_group', 'who_viewed_bg_color');
         register_setting('who_viewed_group', 'who_viewed_acc_color');
@@ -155,14 +163,15 @@ class WV_OPTIONS_PAGE
         register_setting('who_viewed_group', 'who_viewed_h_alignment');
         register_setting('who_viewed_group', 'who_viewed_v_alignment');
         register_setting('who_viewed_group', 'who_viewed_post_types');
+        register_setting('who_viewed_group', 'who_viewed_hasExit');
     }
 
     /*
      * Post Types field callback
      */
 
-     public function who_viewed_post_types_callback()
-     {
+    public function who_viewed_post_types_callback()
+    {
          $selected_post_types = get_option('who_viewed_post_types', array());
  
          $post_types = get_post_types(array('public' => true), 'objects');
@@ -181,14 +190,15 @@ class WV_OPTIONS_PAGE
              ?>
          </fieldset>
          <?php
-     }
+    }
+
     /*
      * Section callback
      */
 
     public function who_viewed_section_callback()
     {
-        echo 'Check the box to enable the feature:';
+        echo 'We do not know your website. Please configure the plugin to your liking and to the scale of your audience: ';
     }
 
     /*
@@ -201,6 +211,17 @@ class WV_OPTIONS_PAGE
         ?>
         <label for="who_viewed_enabled">
             <input type="checkbox" id="who_viewed_enabled" name="who_viewed_enabled" value="1" <?php checked($enabled); ?>>
+            Enable
+        </label>
+        <pre><p><b>Must be enabled</b></p></pre>
+        <?php
+    }
+    public function who_viewed_hasExit_callback()
+    {
+        $enabled = get_option('who_viewed_hasExit', false);
+        ?>
+        <label for="who_viewed_hasExit">
+            <input type="checkbox" id="who_viewed_hasExit" name="who_viewed_hasExit" value="1" <?php checked($enabled); ?>>
             Enable
         </label>
         <?php
@@ -255,7 +276,7 @@ class WV_OPTIONS_PAGE
         $text = get_option('who_viewed_icon', '');
         ?>
         <input type="text" id="who_viewed_icon" name="who_viewed_icon" value="<?php echo esc_attr($text); ?>" class="regular-text" />
-        <pre><p><b><u><a href ="https://fontawesome.com/icons">TEXT</a></u></b>    The icon you wish to be displayed in the notification <b>accent</b>. Example: <i>fas fa-eye</i>. Leave empty for solid color</p></pre>
+        <pre><p><b><u><a href ="https://fontawesome.com/icons">TEXT</a></u></b>    <div style="color:red"><b>NOT FUNCTIONAL YET</b></div>The icon you wish to be displayed in the notification <b>accent</b>. Example: <i>fas fa-eye</i>. Leave empty for solid color</p></pre>
         <?php
     }
 
@@ -264,7 +285,7 @@ class WV_OPTIONS_PAGE
         $text = get_option('who_viewed_timeZone', '');
         ?>
         <input type="text" maxlength ="20" id="who_viewed_timeZone" name="who_viewed_timeZone" value="<?php echo esc_attr($text); ?>" class="regular-text" />
-        <pre><p><p><b><u>CONTINENT/COUNTRY (TEXT)</u></b>    We keep track of <b>time zones</b> for you, making the view count more realistic. <a href = "https://www.php.net/manual/en/timezones.php">List of <b>timezones</b></a></p></pre>
+        <pre><p><p><b><u>Continent/Country</u></b>    We keep track of <b>time zones</b> for you, making the view count more realistic. <a href = "https://www.php.net/manual/en/timezones.php">List of <b>timezones</b></a></p></pre>
         <?php
     }
     public function who_viewed_scale_callback()
@@ -339,7 +360,8 @@ class WV_OPTIONS_PAGE
             'who_viewed_timeZone'       => get_option('who_viewed_timeZone', false),
             'who_viewed_scale'          => get_option('who_viewed_scale', false),
             'who_viewed_icon'           => get_option('who_viewed_icon', false),
-            'who_viewed_post_types'     => get_option('who_viewed_post_types', array())
+            'who_viewed_post_types'     => get_option('who_viewed_post_types', array()),
+            'who_viewed_hasExit'        => get_option('who_viewed_hasExit', false)
             // MORE SETTINGS TO BE ADDED
         );
 
