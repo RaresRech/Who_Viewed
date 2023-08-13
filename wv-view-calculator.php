@@ -75,7 +75,7 @@
           */
  
          $seed = crc32($post_id);
-         $random_value = mt_rand(0, 6); // Generate a random value between 0 and 6
+         $random_value = mt_rand(0, 1); // Generate a random value between 0 and 6
  
          /*
           * Adjusting value based off seed

@@ -75,9 +75,11 @@ class WV_VIEWCOUNT
                         <i class="<?php echo $this->faIcon; ?>" id = "notificon"></i>
                     </div>
                     <div id="desc">
+                        
                         <?php echo $this->calculator->calculate(
                             get_the_ID()
                         ); ?> <?php echo $this->displayedText; ?>
+                          <div class="closeButton" onclick="closeDiv()">x</div>
                     </div>
                 </div>   
             <?php }
