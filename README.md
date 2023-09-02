@@ -19,7 +19,7 @@ read your announcement, interact with your post, buy your products.
 
 ## Support
 
-For any issues, questions, or suggestions, please raresrechesan26@gmail.com
+For any issues, questions, or suggestions, please reach at raresrechesan26@gmail.com
 
 ## Changelog
 
