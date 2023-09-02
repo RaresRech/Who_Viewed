@@ -16,32 +16,46 @@
          date_default_timezone_set($timeZone);
      }
  
-     function calculate($post_id)
+     function calculate($post_id,$intervals,$weights)
      {
          $weekend_amplifier = 0.5;                   // Randomly amplify weekend views between 1.0 and 2.0
-         $current_time = date('H');                 // Current hour in 24-hour format
- 
-         $time_intervals = array(
-             1 => "00-02",
-             2 => "03-07",
-             3 => "08-12",
-             4 => "13-16",
-             5 => "17-18",
-             6 => "18-19",
-             7 => "20-21",
-             8 => "22-23"
-         );
- 
-         $weight_factors_time = array(
-             1 => 0.5,
-             2 => 1.0,
-             3 => 1.5,
-             4 => 1.0,
-             5 => 1.5,
-             6 => 2.0,
-             7 => 2.0,
-             8 => 1.0
-         );
+         $current_time = date('H');                  // Current hour in 24-hour format
+         
+         if($intervals!=null)
+         {
+            $time_intervals = $intervals;
+         }
+         else                                        //The default time intervals
+         {
+            $time_intervals = array(
+                1 => "00-02",
+                2 => "03-07",
+                3 => "08-12",
+                4 => "13-16",
+                5 => "17-18",
+                6 => "18-19",
+                7 => "20-21",
+                8 => "22-23"
+            );
+         }
+
+         if($weights!=null)
+         {
+            $weight_factors_time = $weights;
+         }
+         else
+         {
+            $weight_factors_time = array(
+                1 => 0.5,
+                2 => 1.0,
+                3 => 1.5,
+                4 => 1.0,
+                5 => 1.5,
+                6 => 2.0,
+                7 => 2.0,
+                8 => 1.0
+            );
+         }
  
          /*
           * Determine the current time interval key

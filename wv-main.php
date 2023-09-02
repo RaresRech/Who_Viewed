@@ -24,12 +24,14 @@
     require_once ("wv-frontend/wv-init.php");
     require_once ("wv-frontend/wv-enqueued.php");
     require_once ("wv-backend/wv-viewcount.php");
+    require_once ("wv-utils.php");
 /*
  * INITIALIZATION: Creating an option page when the plugin is activated, (tbc).
  */
     new ENQUEUED_SCRIPTS;                                  //Enqueue the styles and scripts
     $optionsPage = new WV_OPTIONS_PAGE();                  //Create an options page object
     $optionsPage -> who_viewed_activation_function();      //Create (Or destroy) options page
+    $utils = new UTILS();
 /*
  * Get settings from the options page 
  */
@@ -54,9 +56,12 @@
           'accentColor'       => $settings['who_viewed_acc_color'],
           "backgroundColor"   => $settings['who_viewed_bg_color'],
           'faIcon'            => $settings['who_viewed_icon'],
+          'useThumbnail'      => $settings['who_viewed_useThumbnail'],
           'hAlign'            => $settings['who_viewed_h_alignment'],
           'vAlign'            => $settings['who_viewed_v_alignment'],
-          'hasExit'           => $settings['who_viewed_hasExit']
+          'hasExit'           => $settings['who_viewed_hasExit'],
+          'interval'          => $settings['who_viewed_timeInterval'],
+          'weights'           => $settings['who_viewed_timeWeights']
         );
 
         $viewCount = new WV_VIEWCOUNT($viewcountParamArray);

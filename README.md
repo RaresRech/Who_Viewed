@@ -27,6 +27,11 @@ For any issues, questions, or suggestions, please raresrechesan26@gmail.com
 - Initial release
 - Bug fixes
 
+### Version 1.1
+- Added customizable intervals and weights
+- Added the option to display a thumbnail in the accent
+- Bug fixes
+
 ## Contribute
 
 SOON

@@ -57,6 +57,10 @@
     float: left;
     box-sizing: border-box;                           
     color: #000000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #ttoast #img #notificon{
     display: flex;
@@ -68,6 +72,11 @@
     content:'\f007';
     font: var(--fa-font-regular);
 
+}
+#ttoast #img #thumbnail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #ttoast #desc{
     text-align: center;
