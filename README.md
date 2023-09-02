@@ -26,7 +26,8 @@ For any issues, questions, or suggestions, please reach at raresrechesan26@gmail
 ### Version 1.0
 - Initial release
 - Bug fixes
-
+### Verison 1.01
+- Added a close button
 ### Version 1.1
 - Added customizable intervals and weights
 - Added the option to display a thumbnail in the accent
