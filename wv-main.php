@@ -2,9 +2,9 @@
 
 /*
  * Plugin Name:       Who viewed
- * Plugin URI:        http://soferi-profesionisti.ro
+ * Plugin URI:        https://github.com/RaresRech/Who_Viewed
  * Description:       Display a !FAKE! viewer count for your posts, announcements, product pages etc. 
- * Version:           1.0
+ * Version:           1.1
  * Requires at least: 5.0
  * Requires PHP:      7.4
  * Author:            Rares Rechesan
@@ -21,10 +21,10 @@
   */
 
     define("WV_PLUGIN_URI",plugin_dir_url(__FILE__));
-    require_once ("wv-frontend/wv-init.php");
-    require_once ("wv-frontend/wv-enqueued.php");
-    require_once ("wv-backend/wv-viewcount.php");
-    require_once ("wv-utils.php");
+    require_once ("includes/wv-init.php");
+    require_once ("includes/wv-enqueued.php");
+    require_once ("includes/wv-viewcount.php");
+    require_once ("includes/wv-utils.php");
 /*
  * INITIALIZATION: Creating an option page when the plugin is activated, (tbc).
  */

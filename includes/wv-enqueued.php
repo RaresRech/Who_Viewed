@@ -14,8 +14,8 @@ class ENQUEUED_SCRIPTS
 
     public function enqueue_customs() 
     {
-        wp_enqueue_style('container-style', WV_PLUGIN_URI.'wv-container/container-style.css');
-        wp_enqueue_script('containter-behaviour', WV_PLUGIN_URI.'wv-container/containter-behaviour.js');
+        wp_enqueue_style('container-style', WV_PLUGIN_URI.'assets/toast/css/container-style.css');
+        wp_enqueue_script('containter-behaviour', WV_PLUGIN_URI.'assets/toast/js/containter-behaviour.js');
     }
     public function enqueue_head()
     {

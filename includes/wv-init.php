@@ -264,11 +264,7 @@ class WV_OPTIONS_PAGE
          $color = get_option('who_viewed_bg_color', '#000000');
          ?>
          <input type="text" id="who_viewed_bg_color" name="who_viewed_bg_color" value="<?php echo esc_attr($color); ?>" class="color-picker" />
-         <script>
-             jQuery(document).ready(function($) {
-                 $('.color-picker').wpColorPicker();
-             });
-         </script>
+
          <pre><p><b><u><a href = "https://g.co/kgs/eDQmVt">HEX</a></u></b>    The color you wish to be displayed in the notification <b>body</b></p></pre>
          <?php
      }
@@ -278,11 +274,7 @@ class WV_OPTIONS_PAGE
          $color = get_option('who_viewed_acc_color', '#000000');
          ?>
          <input type="text" id="who_viewed_acc_color" name="who_viewed_acc_color" value="<?php echo esc_attr($color); ?>" class="color-picker" />
-         <script>
-             jQuery(document).ready(function($) {
-                 $('.color-picker').wpColorPicker();
-             });
-         </script>
+
          <pre><b><u><a href = "https://g.co/kgs/eDQmVt">HEX</a></u></b>    The color you wish to be displayed in the notification <b>accent</b></p></pre>
          <?php
      }
@@ -522,7 +514,6 @@ class WV_OPTIONS_PAGE
              }
              $sanitized_weights[] = $sanitized_weight;
          }
-     
          return $sanitized_weights;
      }
      
@@ -537,7 +528,6 @@ class WV_OPTIONS_PAGE
             {
                 $timeIntervals = explode(" ",$timeIntervals);    
             }
-
          }
      
          ?>
@@ -551,7 +541,6 @@ class WV_OPTIONS_PAGE
                     <input type="text" name="who_viewed_timeIntervalWeights[]" style = "width: 50px;" value="<?php echo $weight; ?>" >
                     <?php echo esc_html($interval); ?>
                  </label><br>
-
                  <?php
              }
              ?>
