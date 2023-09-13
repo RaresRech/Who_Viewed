@@ -10,7 +10,7 @@
  {
      public $scaling;
  
-     function __construct($_scaling = 1, $timeZone)
+     function __construct($timeZone,$_scaling = 1)
      {
          $this->scaling = $_scaling;
          date_default_timezone_set($timeZone);

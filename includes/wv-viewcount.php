@@ -27,9 +27,13 @@ class WV_VIEWCOUNT
     private $hasExit;
     private $interval;
     private $weights;
+    private $selectedIcon;
 
     function __construct($params)
     {
+
+        // INITIALIZATION OF VARS
+
         $this->postType = $params["postType"];
         $this->scale = $params["scale"];
         $this->timeZone = $params["timeZone"];
@@ -41,13 +45,14 @@ class WV_VIEWCOUNT
         $this->hAlign = $params["hAlign"];
         $this->vAlign = $params["vAlign"];
         $this->hasExit = $params["hasExit"];
+        $this->selectedIcon = $params["selectedIcon"];
         if($params["interval"]!=null)
         {
             $this->interval = $params["interval"];        
         }
         $this->weights = $params["weights"];
 
-        $this->calculator = new VIEW_GENERATOR($this->scale, $this->timeZone);
+        $this->calculator = new VIEW_GENERATOR($this->timeZone,$this->scale);
 
         add_filter("the_content", [$this, "display_toast"]);
     }
@@ -55,6 +60,7 @@ class WV_VIEWCOUNT
     /*
      * Adding the HTML to the page
      */
+     
 
     public function display_toast()
     {
@@ -88,7 +94,7 @@ class WV_VIEWCOUNT
                         if(!$this->useThumbnail)
                         {
                             ?>
-                                <i class="<?php echo $this->faIcon; ?>" id = "notificon"></i>
+                                <img src = "<?php echo WV_PLUGIN_URI."/assets/toast/icons/".$this->selectedIcon.".svg";?>" id = "notificon">
                             <?php
                         }
                         else

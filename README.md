@@ -32,7 +32,9 @@ For any issues, questions, or suggestions, please reach at raresrechesan26@gmail
 - Added customizable intervals and weights
 - Added the option to display a thumbnail in the accent
 - Bug fixes
-
+### Version 1.11
+- Better interface for the settings page
+- 12 New icons for the notification
 ## Contribute
 
 SOON

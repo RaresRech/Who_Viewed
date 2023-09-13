@@ -52,8 +52,10 @@ class WV_OPTIONS_PAGE
         ?>
         
         <div class="wrap">
+            <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
             <?php //settings_errors(); ?>
-            <h2>My Plugin Settings</h2>
+            <h2>Who viewed plugin settings</h2>
+            <h3><img class = "sampleIMG" src = "<?php echo (WV_PLUGIN_URI."/assets/admin/img/sample-notification.png");?>"></h3>
             <form method="post" action="options.php">
                 <?php
                 settings_fields('who_viewed_group');
@@ -226,7 +228,7 @@ class WV_OPTIONS_PAGE
 
     public function who_viewed_section_callback()
     {
-        echo 'We do not know your website. Please configure the plugin to your liking and to the scale of your audience: ';
+        echo esc_html('We do not know your website. Please configure the plugin to your liking and to the scale of your audience: ');
     }
 
     /*
@@ -238,7 +240,7 @@ class WV_OPTIONS_PAGE
         $enabled = get_option('who_viewed_enabled', false);
         ?>
         <label for="who_viewed_enabled">
-            <input type="checkbox" id="who_viewed_enabled" name="who_viewed_enabled" value="1" <?php checked($enabled); ?>>
+            <input type="checkbox" id="who_viewed_enabled" name="who_viewed_enabled" value="1" <?php checked(esc_attr($enabled)); ?>>
             Enable
         </label>
         <pre><p><b>Must be enabled</b></p></pre>
@@ -249,7 +251,7 @@ class WV_OPTIONS_PAGE
         $enabled = get_option('who_viewed_hasExit', false);
         ?>
         <label for="who_viewed_hasExit">
-            <input type="checkbox" id="who_viewed_hasExit" name="who_viewed_hasExit" value="1" <?php checked($enabled); ?>>
+            <input type="checkbox" id="who_viewed_hasExit" name="who_viewed_hasExit" value="1" <?php checked(esc_attr($enabled)); ?>>
             Enable
         </label>
         <?php
@@ -293,12 +295,34 @@ class WV_OPTIONS_PAGE
     }
     public function who_viewed_icon_callback()
     {
-        $text = get_option('who_viewed_icon', '');
-        ?>
-        <input type="text" id="who_viewed_icon" name="who_viewed_icon" value="<?php echo esc_attr($text); ?>" class="regular-text" />
-        <pre><p><b><u><a href ="https://fontawesome.com/icons">TEXT</a></u></b>    <div style="color:red"><b>NOT FUNCTIONAL YET</b></div>The icon you wish to be displayed in the notification <b>accent</b>. Example: <i>fas fa-eye</i>. Leave empty for solid color</p></pre>
-        <?php
+        // Retrieve the current saved option from the database.
+        $options = get_option('who_viewed_icon');
+    
+        $select_options = array(
+            'Eye'           => 'Eye',
+            'Person'        => 'Person',
+            'Exclamation'   => 'Exclamation',
+            'Bulb'          => 'Bulb',
+            'Glasses'       => 'Glasses',
+            'Pen_Person'    => 'Pen_Person',
+            'Search_Person' => 'Search_Person',
+            'Clock'         => 'Clock',
+            'Hourglass'     => 'Hourglass',
+            'Loader'        => 'Loader',
+            'Question'      => 'Question',
+            'Search'        => 'Search'
+        );
+    
+        // Output the select tag.
+        echo '<select name="who_viewed_icon">';
+        foreach ($select_options as $key => $value) {
+            $selected = (isset($options) && $options === $key) ? 'selected="selected"' : '';
+            echo '<option value="' . esc_attr($key) . '" ' . $selected . '>' . esc_html($value) . '</option>';
+        }
+        echo '</select>';
     }
+    
+    
 
     public function who_viewed_useThumbnail_callback()
     {
@@ -546,6 +570,7 @@ class WV_OPTIONS_PAGE
              ?>
             <p>Each <b>float</b> represents the amplification factor in each time interval. For example, for a base value of 2-3 viewers, a weight of 2 will make it 4-6 viewers. Note that the <b>scale</b> option is also always used as a general amplifier.</p>
             <p>For realistic results, slightly increase the weights in time intervals that usually have more traffic.</p>
+            <p><b>PRO TIP: </b> to make the results more realistic, use float values, e.g. 1.47.</p>
         </fieldset>
          <?php
      }
@@ -571,7 +596,8 @@ class WV_OPTIONS_PAGE
             'who_viewed_post_types'     => get_option('who_viewed_post_types', array()),
             'who_viewed_hasExit'        => get_option('who_viewed_hasExit', false),
             'who_viewed_timeInterval'   => get_option('who_viewed_timeIntervals', array()),
-            'who_viewed_timeWeights'    => get_option('who_viewed_timeIntervalWeights', array())
+            'who_viewed_timeWeights'    => get_option('who_viewed_timeIntervalWeights', array()),
+            'who_viewed_selectedIcon'  => get_option('who_viewed_icon','eye')
             // MORE SETTINGS TO BE ADDED
         );
 
