@@ -7,7 +7,7 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    font-family: 'YourCustomFont', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .sampleIMG {
@@ -25,8 +25,7 @@ h3 {
     font-size: 18px;
     margin-bottom: 10px;
 }
-
-/* Use the --accent-color variable for accent elements */
+ 
 .color-picker {
     width: 100px;
     background-color: var(--accent-color);
