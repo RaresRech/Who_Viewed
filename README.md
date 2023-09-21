@@ -35,6 +35,8 @@ For any issues, questions, or suggestions, please reach at raresrechesan26@gmail
 ### Version 1.11
 - Better interface for the settings page
 - 12 New icons for the notification
+### TO BE ADDED
+- Dynamic view count updates
 ## Contribute
 
 SOON
